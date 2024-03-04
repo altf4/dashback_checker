@@ -49,13 +49,11 @@ class DashBackData(object):
     raw_x = 0
     raw_y = 0
     action = melee.enums.Action.UNKNOWN_ANIMATION
-    facing = True
 
-    def __init__(self, x, y, action, facing):
+    def __init__(self, x, y, action):
         self.raw_x = x
         self.raw_y = y
         self.action = action
-        self.facing = facing
 
 
 successful_dashbacks = 0
@@ -85,7 +83,6 @@ for file in tqdm.tqdm(os.listdir(args.file)):
                         player.controller_state.raw_main_stick[0],
                         player.controller_state.raw_main_stick[1],
                         player.action,
-                        player.facing,
                     )
                 )
 
@@ -184,29 +181,6 @@ for file in tqdm.tqdm(os.listdir(args.file)):
                                         ),
                                     )
 
-                            # # Two consecutive frames of turning
-                            # consecutive_turn_frames = 0
-                            # for i in range(4):
-                            #     if (
-                            #         frames[player][frame_index + i].action
-                            #         == melee.Action.TURNING
-                            #     ):
-                            #         consecutive_turn_frames += 1
-
-                            # if consecutive_turn_frames > 1:
-                            #     failed_dashbacks.append([file, frame_index])
-                            #     print(file, "Failure A", "port", player)
-                            #     for i in range(4):
-                            #         print(
-                            #             frame_index + i,
-                            #             frames[player][frame_index + i].raw_x,
-                            #             frames[player][frame_index + i].raw_y,
-                            #             frames[player][frame_index + i].action,
-                            #             processAnalogStick(
-                            #                 frames[player][frame_index + i].raw_x,
-                            #                 frames[player][frame_index + i].raw_y,
-                            #             ),
-                            #         )
                             if (
                                 frames[player][frame_index + 1].action
                                 == melee.Action.DASHING
