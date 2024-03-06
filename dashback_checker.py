@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description="Example of libmelee in action")
 parser.add_argument(
     "--file",
     "-f",
-    default="./test_data/",
+    default="./test_data/tournament/",
     help="Directory to SLP files to check",
 )
 args = parser.parse_args()
