@@ -125,15 +125,6 @@ for file in tqdm.tqdm(os.listdir(args.file)):
                     # Note: the actual condition is >=0.8, but floating points are weird
                     #   and you shouldn't do equalities on them
                     if raw_distance_traveled > 75 and abs(processed_x_future) > 0.79999:
-                        # TODO DO we still need this?? There's an exception here. If we have exited the deadzone in frame i+1, then we only care about
-                        #   frame i+2 if it's moving in the SAME direction.
-                        #   ie: If you do a slow turn in one direction and then fast turn in the other, you won't get a dashback
-                        # if abs(frames[player][frame_index + 1].raw_x) > DEADZONE:
-                        #     if (frames[player][frame_index + 1].raw_x > 0) != (
-                        #         frames[player][frame_index + 2].raw_x > 0
-                        #     ):
-                        #         break
-
                         # If we're here, then we have input a dash input
                         # BUT. We might not still get a dash. We could get hit, jump, fall off a platform, etc...
                         # So let's check the action state to see what happened in the game
