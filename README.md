@@ -2,11 +2,10 @@
 Checks to see if SLP replays are doing dashbacks correctly
 
 # What counts as a "Successful UCF Dashback"
-Starting from a standing position (frame i), you need to satisfy four conditions on frame i+2:
-- move at least 76 raw units
-- pass the +-64 raw unit barrier
-- move >0.9375 total processed x units
-- move past the +/- 0.8 processed barrier
+
+To do a UCF dash back, you need to start by exiting or passing the processed dead x zone (0.2875), then:
+1. move past the +/- 0.8 processed barrier
+2. move at least 76 raw units
 
 Note: This script actually does check for both dash-forward AND dash-back. But we just call them collectively "dashbacks" for no good reason.
 
@@ -31,6 +30,6 @@ To use your own SLPs, provide the `--file` arg:
 You'll see it output the total number of successes and failures, it'll look something like this:
 
 ```
-Successful dashbacks: 29037
+Successful dashbacks: 1266
 Failed dashbacks:  0
 ```
